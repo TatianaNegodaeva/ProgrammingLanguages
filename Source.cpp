@@ -7,9 +7,9 @@ using namespace std;
 
 
 /**
-*\brief Пользовательский ввод выбора набора массива
-*\param MANUAL Ручной ввод данных
-*\param RANDOM Ввод данных с помощбю рандома
+*\brief РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РІРІРѕРґ РІС‹Р±РѕСЂР° РЅР°Р±РѕСЂР° РјР°СЃСЃРёРІР°
+*\param MANUAL Р СѓС‡РЅРѕР№ РІРІРѕРґ РґР°РЅРЅС‹С…
+*\param RANDOM Р’РІРѕРґ РґР°РЅРЅС‹С… СЃ РїРѕРјРѕС‰Р±СЋ СЂР°РЅРґРѕРјР°
 */
 enum class input_type
 {
@@ -18,95 +18,95 @@ enum class input_type
 };
 
 /**
-*\brief Получение значения параметра массива (строки, столбцы)
-*\param name_of_param Название параметра массива (строка, столбец)
-*\throw Если введено отрицательное число
-*\return Значение параметра
+*\brief РџРѕР»СѓС‡РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ РїР°СЂР°РјРµС‚СЂР° РјР°СЃСЃРёРІР° (СЃС‚СЂРѕРєРё, СЃС‚РѕР»Р±С†С‹)
+*\param name_of_param РќР°Р·РІР°РЅРёРµ РїР°СЂР°РјРµС‚СЂР° РјР°СЃСЃРёРІР° (СЃС‚СЂРѕРєР°, СЃС‚РѕР»Р±РµС†)
+*\throw Р•СЃР»Рё РІРІРµРґРµРЅРѕ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРµ С‡РёСЃР»Рѕ
+*\return Р—РЅР°С‡РµРЅРёРµ РїР°СЂР°РјРµС‚СЂР°
 */
 size_t get_massive_param(string name_of_param);
 
 /**
-*\brief Проверяет номер строки на четность
-*\param string Номер строки
-*\return true если строка по номеру нечётная и false, если чётная
+*\brief РџСЂРѕРІРµСЂСЏРµС‚ РЅРѕРјРµСЂ СЃС‚СЂРѕРєРё РЅР° С‡РµС‚РЅРѕСЃС‚СЊ
+*\param string РќРѕРјРµСЂ СЃС‚СЂРѕРєРё
+*\return true РµСЃР»Рё СЃС‚СЂРѕРєР° РїРѕ РЅРѕРјРµСЂСѓ РЅРµС‡С‘С‚РЅР°СЏ Рё false, РµСЃР»Рё С‡С‘С‚РЅР°СЏ
 */
 bool is_string_not_even_and_not_first(const size_t string);
 
 /**
-*\brief Создание двумерного массива по заданным параметрам
-*\param strings_count Колличество строчек в массиве
-*\param columns_count Колличество столбцов в массиве
-*\return Массив заполненый случайными числами
+*\brief РЎРѕР·РґР°РЅРёРµ РґРІСѓРјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР° РїРѕ Р·Р°РґР°РЅРЅС‹Рј РїР°СЂР°РјРµС‚СЂР°Рј
+*\param strings_count РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕС‡РµРє РІ РјР°СЃСЃРёРІРµ
+*\param columns_count РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЃС‚РѕР»Р±С†РѕРІ РІ РјР°СЃСЃРёРІРµ
+*\return РњР°СЃСЃРёРІ Р·Р°РїРѕР»РЅРµРЅС‹Р№ СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё
 */
 int** create_two_dimensional_arr(const size_t strings_count, const size_t columns_count);
 
 /**
-*\brief Заполение массива случайными числами
-*\param array Массив
-*\param strings_count Колличество строчек в массиве
-*\param column_count Колличество столбцов в массиве
+*\brief Р—Р°РїРѕР»РµРЅРёРµ РјР°СЃСЃРёРІР° СЃР»СѓС‡Р°Р№РЅС‹РјРё С‡РёСЃР»Р°РјРё
+*\param array РњР°СЃСЃРёРІ
+*\param strings_count РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕС‡РµРє РІ РјР°СЃСЃРёРІРµ
+*\param column_count РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЃС‚РѕР»Р±С†РѕРІ РІ РјР°СЃСЃРёРІРµ
 */
 void array_random_fill(int** array, const size_t strings_count, const size_t columns_count);
 
 /**
-*\brief Заполение массива в ручную
-*\param array Массив
-*\param strings_count Колличество строчек в массиве
-*\param columns_count Колличество столбцов в массиве
+*\brief Р—Р°РїРѕР»РµРЅРёРµ РјР°СЃСЃРёРІР° РІ СЂСѓС‡РЅСѓСЋ
+*\param array РњР°СЃСЃРёРІ
+*\param strings_count РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕС‡РµРє РІ РјР°СЃСЃРёРІРµ
+*\param columns_count РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЃС‚РѕР»Р±С†РѕРІ РІ РјР°СЃСЃРёРІРµ
 */
 void array_manual_fill(int** array, const size_t strings_count, const size_t columns_count);
 
 /**
-*\brief Поиск максимального по модолю элемента в массиве
-*\param array Массив
-*\param columns_count Колличество столбцов в массиве
-*\return Максимальный по модулю элемент
+*\brief РџРѕРёСЃРє РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ РїРѕ РјРѕРґРѕР»СЋ СЌР»РµРјРµРЅС‚Р° РІ РјР°СЃСЃРёРІРµ
+*\param array РњР°СЃСЃРёРІ
+*\param columns_count РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЃС‚РѕР»Р±С†РѕРІ РІ РјР°СЃСЃРёРІРµ
+*\return РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РїРѕ РјРѕРґСѓР»СЋ СЌР»РµРјРµРЅС‚
 */
 int get_max_element(int* array, const size_t columns_count);
 
 /**
-*\brief Возведение в квадрат всех чисел в массиве
-*\param array Массив
-*\param strings_count Колличество строчек в массиве
-*\param columns_count Колличество столбцов в массиве
+*\brief Р’РѕР·РІРµРґРµРЅРёРµ РІ РєРІР°РґСЂР°С‚ РІСЃРµС… С‡РёСЃРµР» РІ РјР°СЃСЃРёРІРµ
+*\param array РњР°СЃСЃРёРІ
+*\param strings_count РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕС‡РµРє РІ РјР°СЃСЃРёРІРµ
+*\param columns_count РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЃС‚РѕР»Р±С†РѕРІ РІ РјР°СЃСЃРёРІРµ
 */
 void get_resault_1(int** array, int** new_array, const size_t strings_count, const size_t columns_count);
 
 /**
-*\brief Вставляет первую строчку после каждей нечетной
-*\param array Массив
-*\param strings_count Колличество строчек в массиве
-*\param columns_count Колличество столбцов в массиве
+*\brief Р’СЃС‚Р°РІР»СЏРµС‚ РїРµСЂРІСѓСЋ СЃС‚СЂРѕС‡РєСѓ РїРѕСЃР»Рµ РєР°Р¶РґРµР№ РЅРµС‡РµС‚РЅРѕР№
+*\param array РњР°СЃСЃРёРІ
+*\param strings_count РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕС‡РµРє РІ РјР°СЃСЃРёРІРµ
+*\param columns_count РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЃС‚РѕР»Р±С†РѕРІ РІ РјР°СЃСЃРёРІРµ
 */
 void get_resault_2(int** array, int** new_array, const size_t strings_count, const size_t columns_count);
 
 /**
-* \brief Вывод ответа на первую часть задания
-*\param strings_count Колличество строчек в массиве
-*\param columns_count Колличество столбцов в массиве
+* \brief Р’С‹РІРѕРґ РѕС‚РІРµС‚Р° РЅР° РїРµСЂРІСѓСЋ С‡Р°СЃС‚СЊ Р·Р°РґР°РЅРёСЏ
+*\param strings_count РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕС‡РµРє РІ РјР°СЃСЃРёРІРµ
+*\param columns_count РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЃС‚РѕР»Р±С†РѕРІ РІ РјР°СЃСЃРёРІРµ
 */
 void draw_answer(int** array, const size_t strings_count, const size_t columns_count);
 
 /**
-*\brief Удаление двухмерного массива
-*\param strings_count Колличество строчек (массивов)
+*\brief РЈРґР°Р»РµРЅРёРµ РґРІСѓС…РјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР°
+*\param strings_count РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕС‡РµРє (РјР°СЃСЃРёРІРѕРІ)
 */
 void delete_array(int**& array, const size_t strings_count);
 
 /**
-* \brief вход в программу
-* \return 0 При успехе
+* \brief РІС…РѕРґ РІ РїСЂРѕРіСЂР°РјРјСѓ
+* \return 0 РџСЂРё СѓСЃРїРµС…Рµ
 */
 int main()
 {
 	setlocale(LC_ALL, "Russian");
 	try
 	{
-		size_t strings_count = get_massive_param("Строк");
-		size_t columns_count = get_massive_param("Столбцов");
+		size_t strings_count = get_massive_param("РЎС‚СЂРѕРє");
+		size_t columns_count = get_massive_param("РЎС‚РѕР»Р±С†РѕРІ");
 
-		cout << "Метод заполнения массива\n" << static_cast<int>(input_type::MANUAL) << " - Ввод вручную\n"
-			<< static_cast<int>(input_type::RANDOM) << " - Ввод рандомом\n";
+		cout << "РњРµС‚РѕРґ Р·Р°РїРѕР»РЅРµРЅРёСЏ РјР°СЃСЃРёРІР°\n" << static_cast<int>(input_type::MANUAL) << " - Р’РІРѕРґ РІСЂСѓС‡РЅСѓСЋ\n"
+			<< static_cast<int>(input_type::RANDOM) << " - Р’РІРѕРґ СЂР°РЅРґРѕРјРѕРј\n";
 
 		int user_choise = 0;
 		cin >> user_choise;
@@ -116,23 +116,42 @@ int main()
 
 		switch (choise)
 		{
-		case input_type::MANUAL:
-		{
-			array_manual_fill(array_default, strings_count, columns_count);
-			break;
+			case input_type::MANUAL:
+			{
+				array_manual_fill(array_default, strings_count, columns_count);
+				break;
+			}
+				
+			case input_type::RANDOM:
+			{
+				array_random_fill(array_default, strings_count, columns_count);
+				break;
+			}
+				
+			default:
+			{
+				throw out_of_range("Invalid number");
+			}
 		}
-		case input_type::RANDOM:
-		{
-			array_random_fill(array_default, strings_count, columns_count);
-			break;
-		}
-		default:
-		{
-			throw out_of_range("Invalid number");
-		}
-		}
-		cout << "\n------------Изначальный массив----------" << endl;
+
+		int** array_for_task1 = create_two_dimensional_arr(strings_count, columns_count);
+		size_t strings_count_answer_2 = strings_count + strings_count / 2;
+		int** array_for_task2 = create_two_dimensional_arr(strings_count_answer_2, columns_count);
+
+		get_resault_1(array_default, array_for_task1, strings_count, columns_count);
+		get_resault_2(array_default, array_for_task2, strings_count, columns_count);
+
+		cout << "\n------------РР·РЅР°С‡Р°Р»СЊРЅС‹Р№ РјР°СЃСЃРёРІ----------" << endl;
 		draw_answer(array_default, strings_count, columns_count);
+
+		cout << "\n------------Р—Р°РґР°РЅРёРµ 1------------" << endl;
+		draw_answer(array_for_task1, strings_count, columns_count);
+
+		cout << "\n------------Р—Р°РґР°РЅРёРµ 2-----------" << endl;
+		draw_answer(array_for_task2, strings_count_answer_2, columns_count);
+
+		delete_array(array_for_task1, strings_count);
+		delete_array(array_for_task2, strings_count_answer_2);
 		delete_array(array_default, strings_count);
 	}
 	catch (exception& err)
@@ -146,6 +165,7 @@ bool is_string_not_even_and_not_first(const size_t string)
 {
 	return ((string != 0) && (string + 1) % 2 == 0);
 }
+
 size_t get_massive_param(string name_of_param)
 {
 	cout << name_of_param << ":";
@@ -153,12 +173,13 @@ size_t get_massive_param(string name_of_param)
 	cin >> param;
 	if (param <= 1)
 	{
-		throw out_of_range("Вы ввели неверный параметр");
+		throw out_of_range("Р’С‹ РІРІРµР»Рё РЅРµРІРµСЂРЅС‹Р№ РїР°СЂР°РјРµС‚СЂ");
 	}
-	
+
 
 	return param;
 }
+
 void array_random_fill(int** array, const size_t strings_count, const size_t columns_count)
 {
 	random_device rd;
@@ -175,13 +196,14 @@ void array_manual_fill(int** array, const size_t strings_count, const size_t col
 {
 	for (size_t string = 0; string < strings_count; string++) {
 		for (size_t column = 0; column < columns_count; column++) {
-			cout << "Номер " << string + 1 << "." << column + 1 << ": ";
+			cout << "РќРѕРјРµСЂ" << string + 1 << "." << column + 1 << ":";
 			int user_input = 0;
 			cin >> user_input;
 			array[string][column] = user_input;
 		}
 	}
 }
+
 int** create_two_dimensional_arr(const size_t strings_count, const size_t columns_count)
 {
 	int** ptrarr = new int* [strings_count];
@@ -189,6 +211,59 @@ int** create_two_dimensional_arr(const size_t strings_count, const size_t column
 		ptrarr[i] = new int[columns_count];
 	}
 	return ptrarr;
+}
+
+int get_max_element(int* array, const size_t columns_count)
+{
+	int max_abs = 0;
+	int max = 0;
+	for (size_t string = 0; string < columns_count; string++)
+	{
+		if (abs(array[string]) >= max_abs)
+		{
+			max_abs = abs(array[string]);
+			max = array[string];
+		}
+	}
+	return max;
+}
+
+void get_resault_1(int** array, int** new_array, const size_t strings_count, const size_t columns_count)
+{
+	for (size_t string = 0; string < strings_count; string++) {
+
+		int max = get_max_element(array[string], columns_count);
+		for (size_t column = 0; column < columns_count; column++) {
+			if (array[string][column] == max)
+			{
+				new_array[string][column] = -array[string][column];
+			}
+			else
+			{
+				new_array[string][column] = array[string][column];
+			}
+		}
+	}
+}
+
+void get_resault_2(int** array, int** new_array, const size_t strings_count, const size_t columns_count)
+{
+	int fix = 0;
+	for (size_t string = 0; string < strings_count; string++)
+	{
+		for (size_t column = 0; column < columns_count; column++)
+		{
+			new_array[string + fix][column] = array[string][column];
+			if (is_string_not_even_and_not_first(string))
+			{
+				new_array[string + 1 + fix][column] = array[0][column];
+			}
+		}
+		if (is_string_not_even_and_not_first(string))
+		{
+			fix++;
+		}
+	}
 }
 
 void draw_answer(int** array, const size_t strings_count, const size_t columns_count)
@@ -202,6 +277,7 @@ void draw_answer(int** array, const size_t strings_count, const size_t columns_c
 		cout << endl;
 	}
 }
+
 void delete_array(int**& array, const size_t strings_count)
 {
 	for (size_t string = 0; string < strings_count; string++)
