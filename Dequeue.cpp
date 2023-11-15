@@ -27,11 +27,13 @@ Deque::Deque(const Deque &deque)
     this->size = deque.size;
 }
 
-Deque::Deque(Deque &&deque) noexcept
+/*конструктор перемещения*/
+Deque::Deque(Deque &&deque) noexcept 
 {
     swap(*this, deque);
 }
 
+/*переопределение оператора равно копированием*/
 Deque &Deque::operator=(const Deque &other)
 {
     if (this==&other)
@@ -43,6 +45,7 @@ Deque &Deque::operator=(const Deque &other)
    return *this;
 }
 
+/*перемещение копирванием*/
 Deque &Deque::operator=(Deque &&other) noexcept
 {
     if (this==&other)
@@ -57,7 +60,7 @@ Deque &Deque::operator=(Deque &&other) noexcept
 void Deque::insertfront(int key)
 {
     if (isFull())
-        throw std::overflow_error("Слишком много элементов!");
+        throw std::overflow_error("Слишком много элементов");
  
     if (front == -1) {
         front = 0;
@@ -76,7 +79,7 @@ void Deque::insertfront(int key)
 void Deque ::insertrear(int key)
 {
     if (isFull())
-        throw std::overflow_error("Слишком много элементов!");
+        throw std::overflow_error("Слишком много элементов");
 
  
     if (front == -1) {
@@ -94,7 +97,7 @@ void Deque ::insertrear(int key)
  
 void Deque ::deletefront()
 {
-    if (isEmpty()) throw std::overflow_error("Нет элементов!");
+    if (isEmpty()) throw std::overflow_error("Нет элементов");
  
     if (front == rear) {
         front = -1;
@@ -110,7 +113,7 @@ void Deque ::deletefront()
  
 void Deque::deleterear()
 {
-    if (isEmpty()) throw std::overflow_error("Нет элементов!");
+    if (isEmpty()) throw std::overflow_error("Нет элементов");
  
     if (front == rear) {
         front = -1;
@@ -124,14 +127,14 @@ void Deque::deleterear()
  
 int Deque::getFront()
 {
-    if (isEmpty()) throw std::overflow_error("Нет элементов!");
+    if (isEmpty()) throw std::overflow_error("Нет элементов");
 
     return arr[front];
 }
  
 int Deque::getRear()
 {
-    if (isEmpty() || rear < 0) throw std::overflow_error("Нет элементов!");
+    if (isEmpty() || rear < 0) throw std::overflow_error("Нет элементов");
 
     return arr[rear];
 }
