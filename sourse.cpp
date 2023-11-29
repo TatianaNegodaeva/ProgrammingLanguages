@@ -75,7 +75,7 @@ template<typename T>
 T& List<T>::operator[](const int index)
 {
     int counter = 0;
-    Node<T> *corrent = this->head;
+    Node<T> *current = this->head;
     while(current != nullptr)
     {
         if (counter == index) /*если счётчик равен нужному элементу*/
@@ -101,10 +101,10 @@ int main()
     }
 
     cout << lst.GetSize() << endl;
-    cout << lst[2] << endl;
+    cout << lst[1] << endl;
     for (int i = 0; i < lst.GetSize(); i++)
     {
-        count << lst[i] << endl;
+        cout << lst[i] << endl;
     }
 
     return 0;
