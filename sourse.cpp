@@ -6,17 +6,17 @@ using namespace std;
 * односвязный список
 */
 
-template<typename T>
-class List
+template<typename T> class List
 {
 public:
     List();
     ~List();
 
-    void push_back(T data);
-    int GetSize() {return Size;}
-
-    T& operator[](const int index);
+    void pop_front();
+    void push_back(T data); /*добавить элемент в конец списка*/
+    void clear();
+    int getsize() {return size;}; /*возвращает количество элементов в списке*/
+    T& operator[](const int index); /*по указанному индексу возвращает данные из списка*/
 
 private:
 
@@ -28,28 +28,34 @@ private:
         T data;
 
         /*констуктор*/ 
-        Node(T data = T(), Node *pNext = nullptr) /*указатель на следующий элемент по умолчанию указывает на nullprt, потому что pNext последнего элемента будет null*/ 
+        Node(T data, Node *pNext = nullptr) /*указатель на следующий элемент по умолчанию указывает на nullprt, потому что pNext последнего элемента будет null*/ 
         {
             this->data = data; /*присваивание входящих параметров соответсвующим полям*/
             this->pNext = pNext;
         }
     };
-    int Size; /*количество элементов*/
+    int size; /*количество элементов*/
     Node<T> *head; /*указатель на начало списка*/
 };
 
 template<typename T>
-List<T>::List()
+List<T>::List(size{0}; head{nullptr}) /*конструктор*/
+
+template<typename T>
+List<T>::~List() /*диструктор*/
 {
-    Size = 0;
-    head = nullptr;
+    clear();
 }
 
 template<typename T>
-List<T>::~List()
+void List<T>::pop_front()
 {
-
+    Node<T> *temp = head;
+    head = head->pNext;
+    delete temp;
+    size--;
 }
+
 
 template<typename T>
 void List<T>::push_back(T data) /*вставить элемент в конец списка*/
@@ -68,7 +74,17 @@ void List<T>::push_back(T data) /*вставить элемент в конец 
         current->pNext = new Node<T>(data);
     }
 
-    Size++;
+    size++;
+}
+
+template<typename T>
+void List<T>::clear()
+{
+    while (size)
+    {
+        pop_front();
+    }
+    
 }
 
 template<typename T>
@@ -92,20 +108,29 @@ int main()
     setlocale(LC_ALL, "ru");
 
     List<int> lst;
+    lst.push_back(57);
+    lst.push_back(9);
+    lst.push_back(17);
 
-    int numbersCount;
-    cin >> numbersCount;
-    for(int i = 0; i < numbersCount; i++)
+    /*int numberscount;
+    cin >> numberscount;
+    for(int i = 0; i < numberscount; i++)
     {
         lst.push_back(rand() % 10);
     }
 
-    cout << lst.GetSize() << endl;
-    cout << lst[1] << endl;
-    for (int i = 0; i < lst.GetSize(); i++)
+    cout << lst[1] << endl;*/
+
+    for (int i = 0; i < lst.getsize(); i++)
     {
         cout << lst[i] << endl;
     }
+
+    /*cout << endl << "Элементов в списке" << lst.getsize() << endl;
+
+        lst.clear();
+
+    cout << endl << "Элементов в списке" << lst.getsize() << endl;*/
 
     return 0;
 }
