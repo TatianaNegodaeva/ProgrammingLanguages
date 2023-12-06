@@ -18,6 +18,11 @@ public:
     int getsize() {return size;}; /*возвращает количество элементов в списке*/
     T& operator[](const int index); /*по указанному индексу возвращает данные из списка*/
 
+    void push_front(T data);
+    void insert(T value, int index);
+    void removeAt(int index);
+    void pop_back();
+
 private:
 
     template<typename T>
@@ -39,11 +44,11 @@ private:
 };
 
 template<typename T>
-List<T>::List(size{0}; head{nullptr}) /*конструктор*/
+List<T>::List(size{0}, head{nullptr}) /*конструкто*/
 
 template<typename T>
 List<T>::~List() /*диструктор*/
-{
+{   
     clear();
 }
 
@@ -53,7 +58,7 @@ void List<T>::pop_front()
     Node<T> *temp = head;
     head = head->pNext;
     delete temp;
-    size--;
+    --size;
 }
 
 
@@ -74,7 +79,7 @@ void List<T>::push_back(T data) /*вставить элемент в конец 
         current->pNext = new Node<T>(data);
     }
 
-    size++;
+    ++size;
 }
 
 template<typename T>
@@ -85,6 +90,59 @@ void List<T>::clear()
         pop_front();
     }
     
+}
+
+template<typename T>
+void List<T>::insert(T data , int index)
+{
+
+    if(index==0)
+    {
+        push_front(data);
+    }
+    else
+    {
+        Node<T> *previous = this->head;
+
+        for (int i = 0; i < index - 1; ++i)
+        {
+            previous = previous->pNext;
+        }
+
+        previous->pNext = new Node<T>(data, previous->pNext);
+
+        ++size;
+    }
+}
+
+template<typename T>
+void List()::pop_back()
+{
+    removeAt(size - 1);
+}
+
+template<typename T>
+void List()::removeAt(int index)
+{
+    if(index == 0)
+    {
+        pop_front();
+    }
+    else
+    {
+        Node<T> *previous = this->head;
+        for (int i = 0; i < index - 1; ++i)
+        {
+            previous = previous->pNext;
+        }
+
+        Node<T> *toDelete = previous->pNext;
+
+        previous->pNext = toDelete->pNext;
+
+        delete toDelete;
+        --size;
+    }
 }
 
 template<typename T>
@@ -99,8 +157,15 @@ T& List<T>::operator[](const int index)
             return current->data; /*вывести значение в искомом индексе*/
         }
         current = current->pNext; /*взять следующие значение*/
-        counter++;
+        ++counter;
     }
+}
+
+template<typename T>
+void List<T>::push_front(T data)
+{
+    head = new Node<T>(data, head);
+    ++size;
 }
 
 int main()
