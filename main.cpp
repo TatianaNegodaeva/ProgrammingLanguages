@@ -1,14 +1,12 @@
-#include 'sourse.h'
-
+#include "sourse.h"
+#include <iostream>
+using namespace std;
 
 int main()
 {
     setlocale(LC_ALL, "ru");
 
     List<int> lst;
-    lst.push_back(57);
-    lst.push_back(9);
-    lst.push_back(17);
 
     int numberscount;
     cin >> numberscount;
@@ -24,11 +22,7 @@ int main()
         cout << lst[i] << endl;
     }
 
-    cout << endl << "Элементов в списке" << lst.getsize() << endl;
-
-        lst.clear();
-
-    cout << endl << "Элементов в списке" << lst.getsize() << endl;
+    cout << "Элементов в списке" << lst.getsize() << endl;
 
     return 0;
 }

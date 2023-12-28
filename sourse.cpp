@@ -1,21 +1,26 @@
+#include <iostream>
+#include "sourse.h"
+using namespace std;
 
 template<typename T>
-List<T>::List() : size{0}, head{nullptr} /*конструкто*/
+List<T>::List() : size(0), head(nullptr) {} /*конструкто*/
 
 template<typename T>
 List<T>::~List() /*деструктор*/
 {   
-    clear();
+    while (size != 0)
+    {
+        if (head == nullptr)
+        {
+            return; 
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+            --size;
+        }     
+    }
 }
 
-template<typename T>
-void List<T>::pop_front()
-{
-    Node<T> *temp = head;
-    head = head->pNext;
-    delete temp;
-    --size_t;
-}
 
 
 template<typename T>
@@ -23,106 +28,119 @@ void List<T>::push_back(T data) /*вставить элемент в конец 
 {
     if (head == nullptr) /*если список пустой*/
     {
-        head = new Node<T>(data); /*создаём новый элемент и передать в конструктор данные*/
+        head = new Node(data); /*создаём новый элемент и передать в конструктор данные*/
     }
     else /*если список не пустой*/
     {
-        Node<T> *current = this->head;
-        while (current->pNext != nullptr) /*если указатель на следующий элемент не нулевой*/
+        Node* current = head;
+        while (current->next != nullptr) /*если указатель на следующий элемент не нулевой*/
         {
-            current = current->pNext;
+            current = current->next;
         }
-        current->pNext = new Node<T>(data);
+        current->next = new Node(data);
     }
 
-    ++size_t;
+++size;
+
 }
 
+
 template<typename T>
-void List<T>::clear()
+void List<T>::insert(T data, int index)
 {
-    while (size_t != 0)
+    if (index > size) 
     {
-        pop_front();
+        throw std::out_of_range("Index out of range"); // Правильный выброс исключения.
     }
-    
-}
-
-template<typename T>
-void List<T>::insert(T data , int index)
-{  
-    if (index >= size) 
-    {
-        throw std::out << 'ошибка' << std::endl;
-    }
-    if(index==0)
+    if(index == 0)
     {
         push_front(data);
     }
     else
     {
-        Node<T> *previous = this->head;
+        Node* previous = head;
 
         for (int i = 0; i < index - 1; ++i)
         {
-            previous = previous->pNext;
+            previous = previous->next;
         }
 
-        previous->pNext = new Node<T>(data, previous->pNext);
-
-        ++size_t;
+        Node* newNode = new Node(data, previous->next);
+        previous->next = new Node(data, previous->next);
+        ++size;
     }
 }
 
-template<typename T>
-void List()::pop_back()
-{
-    removeAt(size_t - 1);
-}
-
-template<typename T>
-void List()::removeAt(int index)
-{
-    if(index == 0)
-    {
-        pop_front();
-    }
-    else
-    {
-        Node<T> *previous = this->head;
-        for (int i = 0; i < index - 1; ++i)
-        {
-            previous = previous->pNext;
-        }
-
-        Node<T> *toDelete = previous->pNext;
-
-        previous->pNext = toDelete->pNext;
-
-        delete toDelete;
-        --size_t;
-    }
-}
-
+// Этот оператор теперь выбрасывает исключение, если индекс недопустим.
 template<typename T>
 T& List<T>::operator[](const int index)
 {
-    int counter = 0;
-    Node<T> *current = this->head;
-    while(current != nullptr)
+    if (index < 0 || index >= size) // Проверка на допустимость индекса.
     {
-        if (counter == index) /*если счётчик равен нужному элементу*/
+        throw std::out_of_range("Index out of range");
+    }
+    
+    
+    if(index == 0)
+    {
+        push_front(data);
+    }
+    else
+    {
+        Node* previous = head;
+
+        for (int i = 0; i < index - 1; ++i)
         {
-            return current->data; /*вывести значение в искомом индексе*/
+            previous = previous->next;
         }
-        current = current->pNext; /*взять следующие значение*/
-        ++counter;
+
+        previous->next = new Node(data, previous->next);
+
+        ++size;
+    }
+}
+
+template<typename T>
+void List<T>::pop_back()
+{
+    removeAt(size - 1);
+}
+
+template<typename T>
+void List<T>::removeAt(int index)
+{
+    if(index == 0)
+    {
+        if (head == nullptr)
+        {
+            return; 
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+            --size;
+        }     
+    }
+    else
+    {
+        Node* 
+        previous = head;
+        for (int i = 0; i < index - 1; ++i)
+        {
+            previous = previous->next;
+        }
+
+        Node* toDelete = previous->next;
+
+        previous->next = toDelete-next;
+
+        delete toDelete;
+        --size;
     }
 }
 
 template<typename T>
 void List<T>::push_front(T data)
 {
-    head = new Node<T>(data, head);
-    ++size_t;
+    head = new Node(data, head);
+    ++size;
 }
