@@ -1,28 +1,13 @@
-#include "sourse.h"
-#include <iostream>
-using namespace std;
+#include "source.h"
+#include "source.cpp"
 
 int main()
 {
-    setlocale(LC_ALL, "ru");
+    List<int> list;
 
-    List<int> lst;
-
-    int numberscount;
-    cin >> numberscount;
-    for(int i = 0; i < numberscount; i++)
-    {
-        lst.push_back(rand() % 10);
-    }
-
-    cout << lst[1] << endl;
-
-    for (int i = 0; i < lst.getsize(); i++)
-    {
-        cout << lst[i] << endl;
-    }
-
-    cout << "Элементов в списке" << lst.getsize() << endl;
-
-    return 0;
+    list.push_front(4);
+    list.push_front(8);
+    list.push_front(7);
+    list.push_front(1);
+    list.push_front(3);
 }
